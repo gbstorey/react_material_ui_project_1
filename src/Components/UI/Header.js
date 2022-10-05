@@ -5,6 +5,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import  {useScrollTrigger}  from '@mui/material';
 import styled from '@emotion/styled';
+import Button from '@mui/material/Button';
 
 import {ReactComponent as Logo} from '../../assets/logo.svg'
 
@@ -26,11 +27,11 @@ function ElevationScroll(props) {
 
   const Root = styled('div')(({theme}) => ({
         ...theme.mixins.toolbar,
-        marginBottom:"2em"
+        marginBottom: "2rem",
   }));
   
   const ArcLogo = styled(Logo)(() => ({
-    maxHeight: '6rem'
+    maxWidth: "350px"
   }));
 
   const TabSet = styled(Tabs)(()=>({
@@ -40,8 +41,17 @@ function ElevationScroll(props) {
 
   const TopTab = styled(Tab)(({theme})=>({
     ...theme.typography.tab,
-    marginLeft: "10px",
   }))
+
+  const EstimateButtonBlueprint = ({className}) => <Button className={className} variant="contained" color="secondary">
+  Free Estimate
+</Button>
+
+const EstimateButton = styled(EstimateButtonBlueprint)(({theme})=>({
+  margin: "20px 15px 20px 0px",
+  fontSize: "0.8rem",
+  ...theme.typography.button,
+}))
 
 export default function Header(props) {
     return (
@@ -58,6 +68,7 @@ export default function Header(props) {
                   <TopTab label="About Us" />
                   <TopTab label="Contact Us" />
                 </TabSet>
+                <EstimateButton />
                 </Toolbar>
             </AppBar>
         </ElevationScroll>

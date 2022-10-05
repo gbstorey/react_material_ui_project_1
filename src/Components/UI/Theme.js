@@ -23,6 +23,13 @@ export default createTheme({
           textTransform: "none",
           fontWeight: "700",
           fontSize: "0.9rem",
+        },
+        button: {
+          fontFamily: "Raleway",
+          color: 'black',
+          textTransform: "none",
+          fontWeight: "700",
+          fontSize: "0.9rem",
         }
     }
   });
