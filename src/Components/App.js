@@ -5,7 +5,7 @@ import theme from "./UI/Theme";
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <Header/>
+      <Header theme={theme}/>
         Hello!
     </ThemeProvider>
   );

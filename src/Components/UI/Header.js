@@ -8,6 +8,8 @@ import styled from '@emotion/styled';
 
 import {ReactComponent as Logo} from '../../assets/logo.svg'
 
+// Scrolling Shadow Functionality
+
 function ElevationScroll(props) {
     const { children } = props;
     const trigger = useScrollTrigger({
@@ -20,38 +22,42 @@ function ElevationScroll(props) {
     });
   }
 
-  const PREFIX = 'Header';
-  const classes = {
-    root: `${PREFIX}-root`,
-    imageIcon: `${PREFIX}-imageIcon`
-  }
+// Styled Components
 
   const Root = styled('div')(({theme}) => ({
-    [`&.${classes.root}`]: {
         ...theme.mixins.toolbar,
         marginBottom:"2em"
-    },
-  }))
+  }));
   
-  const ArcLogo = styled(Logo)((theme) => ({
+  const ArcLogo = styled(Logo)(() => ({
     maxHeight: '6rem'
   }));
+
+  const TabSet = styled(Tabs)(()=>({
+    marginLeft: 'auto',
+    marginRight: '25px'
+  }))
+
+  const TopTab = styled(Tab)(({theme})=>({
+    ...theme.typography.tab,
+    marginLeft: "10px",
+  }))
 
 export default function Header(props) {
     return (
         <>
-        <Root className={classes.root}>
+        <Root>
         <ElevationScroll {...props}>
             <AppBar position="fixed" color="primary">
                 <Toolbar disableGutters>
-                    <ArcLogo className={classes.imageIcon} inheritViewBox/>
-                <Tabs>
-                  <Tab label="Home" />
-                  <Tab label="Services" />
-                  <Tab label="The Revolution" />
-                  <Tab label="About Us" />
-                  <Tab label="Contact Us" />
-                </Tabs>
+                    <ArcLogo />
+                <TabSet>
+                  <TopTab label="Home" />
+                  <TopTab label="Services" />
+                  <TopTab label="The Revolution" />
+                  <TopTab label="About Us" />
+                  <TopTab label="Contact Us" />
+                </TabSet>
                 </Toolbar>
             </AppBar>
         </ElevationScroll>
