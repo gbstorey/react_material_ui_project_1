@@ -1,11 +1,12 @@
 import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import Box from '@mui/material/Box';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 import  {useScrollTrigger}  from '@mui/material';
 import styled from '@emotion/styled';
 
-import logo from '../../assets/logo.svg'
+import {ReactComponent as Logo} from '../../assets/logo.svg'
 
 function ElevationScroll(props) {
     const { children } = props;
@@ -21,16 +22,20 @@ function ElevationScroll(props) {
 
   const PREFIX = 'Header';
   const classes = {
-    root: `${PREFIX}-root`
+    root: `${PREFIX}-root`,
+    imageIcon: `${PREFIX}-imageIcon`
   }
 
   const Root = styled('div')(({theme}) => ({
     [`&.${classes.root}`]: {
         ...theme.mixins.toolbar,
         marginBottom:"2em"
-    }
+    },
   }))
-
+  
+  const ArcLogo = styled(Logo)((theme) => ({
+    maxHeight: '6rem'
+  }));
 
 export default function Header(props) {
     return (
@@ -39,14 +44,14 @@ export default function Header(props) {
         <ElevationScroll {...props}>
             <AppBar position="fixed" color="primary">
                 <Toolbar disableGutters>
-                <Box 
-                  component="img"
-                  sx={{
-                    maxHeight: "5rem",
-                  }}
-                  alt="company logo"
-                  src={logo}
-                />
+                    <ArcLogo className={classes.imageIcon} inheritViewBox/>
+                <Tabs>
+                  <Tab label="Home" />
+                  <Tab label="Services" />
+                  <Tab label="The Revolution" />
+                  <Tab label="About Us" />
+                  <Tab label="Contact Us" />
+                </Tabs>
                 </Toolbar>
             </AppBar>
         </ElevationScroll>
